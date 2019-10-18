@@ -1,3 +1,5 @@
+from __future__ import division
+
 import numpy as np
 
 from vision.utils.box_utils import generate_priors

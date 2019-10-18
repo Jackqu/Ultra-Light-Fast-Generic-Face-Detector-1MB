@@ -1,4 +1,6 @@
 # from https://github.com/amdegroot/ssd.pytorch
+# -*- coding: UTF-8 -*-
+from __future__ import division
 
 
 import types

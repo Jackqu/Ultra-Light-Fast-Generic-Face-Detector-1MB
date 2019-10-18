@@ -1,6 +1,8 @@
 """
 This code is used to batch detect images in a folder.
 """
+from __future__ import division
+
 import argparse
 import os
 import sys
@@ -72,11 +74,13 @@ for file_path in listdir:
         box = boxes[i, :]
         cv2.rectangle(orig_image, (box[0], box[1]), (box[2], box[3]), (0, 0, 255), 2)
         # label = f"""{voc_dataset.class_names[labels[i]]}: {probs[i]:.2f}"""
-        label = f"{probs[i]:.2f}"
+        #label = f"{probs[i]:.2f}"
+        label = "{:.2f}".format(probs[i])
         # cv2.putText(orig_image, label, (box[0], box[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
     cv2.putText(orig_image, str(boxes.size(0)), (30, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
     cv2.imwrite(os.path.join(result_path, file_path), orig_image)
-    print(f"Found {len(probs)} faces. The output image is {result_path}")
+    #print(f"Found {len(probs)} faces. The output image is {result_path}")
+    print("Found {} faces. The output image is {}".format(len(probs),result_path))
     print('avg_time:', avg_time / img_num)
 
 
